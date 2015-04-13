@@ -1,0 +1,8 @@
+my.cnf
+db.sqlite3
+**/__pycache__/*
+**/migrations/*
+*.pyc
+*~
+*.swp
+\#*\#

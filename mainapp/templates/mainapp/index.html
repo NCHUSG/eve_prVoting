@@ -1,0 +1,53 @@
+{% extends "mainapp/base.html" %}
+{% block title %}
+Student ID
+{% endblock %}
+{% block context %}
+<h1 style="text-align: center;">校長遴選學生意向投票領票系統</h1>
+<h3 style="text-align: center;">請輸入學號</h3>
+<div class="ui four column centered grid">                                                                                                             
+    <div class="column">                                                                                                                               
+	<div class="ui segment">
+  		<div id="loader"  class="ui inverted dimmer">
+    		<div class="ui text loader">Loading</div>
+	  	</div>
+        <form class="ui form" action="{% url 'submit' %}">                                                                                                                               
+            <div class="field">                                                                                                                        
+                <input type="text">                                                                                                                    
+            </div>                                                                                                                                     
+            <div class="fluid ui button">                                                                                                                    
+                Submit                                                                                                                                 
+            </div>                                                                                                                                     
+        </form>                                                                                                                                        
+	</div>
+    </div>                                                                                                                                             
+</div>
+<div class="ui four column centered grid">
+    <div class="column">
+	<h2 id="output" style="text-align: center;"></h2> 
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+function submit(){  
+	var url = $('form').attr('action');
+	var sid = $('input[type=text]').val();
+	$('div#loader').addClass("active");
+	$.ajax(url,{
+		method:'GET',
+		data:{sid:sid},
+		success:function(result){ $('h2#output').text(result); },
+		error:function(){ alert("Connection failed!"); },
+	}).done(function() {
+		$('div#loader').removeClass("active");}
+	);
+	return false;}
+$(function(){
+$('div.button').click(submit);
+$('form').submit(submit);
+});
+</script>
+
+{% endblock %}
+

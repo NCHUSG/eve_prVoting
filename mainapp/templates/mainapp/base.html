@@ -1,0 +1,20 @@
+<!DOCTYPE html>                                                                                                                                        
+{% load staticfiles %}                                                                                                                                 
+<html>                                                                                                                                                 
+    <head>                                                                                                                                             
+        <title>{% block title %} Base {% endblock %}</title>                                                                                          
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css">                                             
+        {% block style %}                                                                                                                              
+        {% endblock %}                                                                                                                                 
+    </head>                                                                                                                                            
+    <body>                                                                                                                                             
+        {% block context %}                                                                                                                            
+        <h1>Hello</h1>                                                                                                                                 
+        {% endblock %}                                                                                                                                 
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>                                                          
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>                              
+{% block script %}
+{% endblock %}
+    </body>                                                                                                                                            
+</html> 
